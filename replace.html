@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<style>
+  .buttonTest{
+    background-color: green;
+    color: white;
+    margin-left: 10px;
+  }
+</style>
+<body>
+
+<h1>JavaScript replace kullanımı</h1>
+<p style="font:bold;">replace() methodu metin içerisinde belirlenen karakter/karakterleri istenilen girdi ile değiştirir.</p>
+
+<h3 id="str" style="font-style:italic;">Test için kullanılacak metindir.Bu metin içerisinde Replace işlemleri yapılacaktır.</h3>
+
+<ul>
+  <li>Yalnızca ilk eşleşen karakteri belirlenen girdi ile değiştirir. <button class="buttonTest" onclick="runFunc(1)">Test Et</button></li>
+  <li>Tüm metin içinde eşeleşen karakterleri belirlenen girdi ile değiştirmek için regular exp kullanmalıdır. replace(/belirlenenKarakter/g, 'girdi') <button class="buttonTest" onclick="runFunc(2)">Test Et</button></li>
+  <li>Büyük/küçük harf duyarlıdır. <button class="buttonTest" onclick="runFunc(3)">Test Et</button></li>
+  <li>Büyük/küçük duyarlılığı dikkate alınmaması için regular exp kullanılır. replace(/belirlenenKarakter/i, 'girdi') <button class="buttonTest" onclick="runFunc(4)">Test Et</button></li>
+  <li>Büyük/küçük duyarlılığı dikkate alınmaması ve tüm belirlenen karakterlerin değişimi için regular exp kullanılır. replace(/belirlenenKarakter/gi, 'girdi') <button class="buttonTest" onclick="runFunc(5)">Test Et</button></li>
+
+</ul>
+
+<p id="desc"></p>
+<p id="result"></p>
+
+<script>
+  function runFunc(type) {
+
+    var str = document.getElementById("str").innerHTML;
+    switch(type)
+    {
+      case 1:
+        document.getElementById("desc").innerHTML = "<br style='color:green;'>replace('r','!') kullanıldığında sadece ilk bulunan r harfi ! ile değiştirilecek. </br> ";
+        str = str.replace("r","!"); 
+        break;
+      case 2:
+        document.getElementById("desc").innerHTML = "<br style='color:green;'>replace(/r/g,'!') kullanıldığında tüm bulunan r harfi ! ile değiştirilecek. </br> ";
+        str = str.replace(/r/g,"!"); 
+        break;  
+      case 3:
+        document.getElementById("desc").innerHTML = "<br style='color:green;'>replace('R','!') kullanıldığında sadece R harfi ! ile değiştirilecek. </br> ";
+        str = str.replace("R","!"); 
+        break;
+      case 4:
+        document.getElementById("desc").innerHTML = "<br style='color:green;'>replace(/R/i,'!') kullanıldığında ilk bulunan R/r harfi ! ile değiştirilecek. </br> ";
+        str = str.replace(/R/i, '!'); 
+        break;
+      case 5:
+        document.getElementById("desc").innerHTML = "<br style='color:green;'>replace(/R/gi,'!') kullanıldığında tüm R/r harfleri ! ile değiştirilecek. </br> ";
+        str = str.replace(/R/gi, '!'); 
+        break;
+   
+    }  
+
+    document.getElementById("result").innerHTML = "<b style='color:red;'>*** Sonuç:</b> " + str;
+  }
+</script>
+
+</body>
+</html>
